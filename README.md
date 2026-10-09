@@ -1,331 +1,331 @@
 # DIALOGA English MSP
 
-**Interactive web tool for developing spoken production and interaction in English through the "Progressive Situational Micro-Dialogues (MSP) Model".**
+**Herramienta web interactiva para desarrollar la producción e interacción oral en inglés mediante el «Modelo de Microdiálogos Situacionales Progresivos (MSP)».**
 
-It generates English micro-dialogues with **2 or 3 speakers** set in everyday situations and, for each situation, produces **three versions of the same scenario**. What changes between versions is not the vocabulary: it is the **cognitive and communicative demand**.
+Genera microdiálogos en inglés con **2 o 3 interlocutores** ambientados en situaciones cotidianas y, para cada situación, produce **tres versiones del mismo escenario**. Lo que cambia entre versiones no es el vocabulario: es la **demanda cognitiva y comunicativa**.
 
-It comes with **42 ready-to-use situations** (126 micro-dialogues: 42 × 3 levels) spread across 6 categories, from daily life and services to conflict and negotiation, including school life and professional outlook.
+Trae **42 situaciones listas para usar** (126 microdiálogos: 42 × 3 niveles) repartidas en 6 categorías, desde la vida diaria y los servicios hasta el conflicto y la negociación, pasando por la vida escolar y la proyección profesional.
 
-> **Key pedagogical principle:** the dialogue is **not the final product**, it is the **scaffold** toward spontaneous communication.
-> Sequence: `Context → Model → Comprehension → Guided practice → Substitution → Personalization → Interaction → Improvisation → Spontaneous production`.
-
----
-
-## Table of contents
-
-- [What it does](#what-it-does)
-- [How to use it](#how-to-use-it)
-- [The three levels](#the-three-levels)
-- [The 9 phases of each level](#the-9-phases-of-each-level)
-- [Included situations](#included-situations)
-- [Teacher guide and rubric](#teacher-guide-and-rubric)
-- [Save, share and import](#save-share-and-import)
-- [API key and BYOP flow](#api-key-and-byop-flow)
-- [Requirements and getting started](#requirements-and-getting-started)
-- [Architecture](#architecture)
-- [API technical details](#api-technical-details)
-- [Scripts and tests](#scripts-and-tests)
-- [Troubleshooting](#troubleshooting)
-- [Privacy and security](#privacy-and-security)
+> **Principio pedagógico clave:** el diálogo **no es el producto final**, es el **andamiaje** hacia la comunicación espontánea.
+> Secuencia: `Contexto → Modelo → Comprensión → Práctica guiada → Sustitución → Personalización → Interacción → Improvisación → Producción espontánea`.
 
 ---
 
-## What it does
+## Tabla de contenidos
 
-- **42 ready-to-use situations** spread across 6 categories, each with its three complete levels. They work **offline and without an API key**, are instant, and serve as a reference for the model.
-- **Filterable catalog**: category chips and a search box that understands Spanish and English, to find a situation in seconds.
-- **AI generation** of any situation you type (in Spanish or English), also with all three levels complete.
-- **Side-by-side view** of the three levels so students can *see* their progression, or **tabs** to work on one at a time.
-- **Practice mode**: hides one character's lines so the student has to produce them, with a button to reveal them one at a time.
-- **Read aloud** of the whole dialogue or a single line (browser SpeechSynthesis).
-- **AI-generated scene illustration**, with a loading indicator and a friendly fallback if it fails.
-- **Copy, download as `.txt` and print** the material (with a print stylesheet for the lesson plan).
-- **Built-in diagnostics** with 20 checks that can be run from the page itself.
-- **Teacher guide per level**: oral assessment rubric and a minute-by-minute session sequence, ready to print.
-- **Local library**: save the micro-dialogues you generate and retrieve them whenever you want.
-- **Share by link**: the micro-dialogue travels inside the link itself (compressed), with no server and no API key. It also exports and imports `.json`.
-
----
-
-## How to use it
-
-1. Open `microdialogos-msp.html` in your browser.
-2. **Choose a situation** from the catalog (instant, free) or **write your own**. Set **2 or 3 speakers** and, if you want, the AI model.
-3. Press **✨ Generate the three levels**. With the catalog it is immediate; with AI it usually takes between 15 and 60 seconds.
-4. Move between **🟢 / 🟡 / 🔴** or press **👁️ View the three levels** to compare the progression.
-5. Turn on **🎭 Practice mode** and choose the character whose lines will be hidden.
-6. Use **🔊 Listen to dialogue** to model pronunciation.
-7. Scroll down to **👩‍🏫 Teacher guide** for the rubric and the session sequence, and press **🖨️ Print guide**.
-8. Take the material to the classroom with **📋 Copy all**, **⬇️ Download .txt** or **🖨️ Print**; save what you want to keep with **💾 Save** and share it with **🔗 Share**.
-
-> **Shortcut:** by pressing **🧪 Diagnostics** in the top bar, the tool checks itself in front of you.
+- [Lo que hace](#lo-qué-hace)
+- [Cómo se usa](#cómo-se-usa)
+- [Los tres niveles](#los-tres-niveles)
+- [Las 9 fases de cada nivel](#las-9-fases-de-cada-nivel)
+- [Situaciones incluidas](#situaciones-incluidas)
+- [Guía docente y rúbrica](#guía-docente-y-rúbrica)
+- [Guardar, compartir e importar](#guardar-compartir-e-importar)
+- [API key y flujo BYOP](#api-key-y-flujo-byop)
+- [Requisitos y arranque](#requisitos-y-arranque)
+- [Arquitectura](#arquitectura)
+- [Detalles técnicos de la API](#detalles-técnicos-de-la-api)
+- [Scripts y pruebas](#scripts-y-pruebas)
+- [Solución de problemas](#solución-de-problemas)
+- [Privacidad y seguridad](#privacidad-y-seguridad)
 
 ---
 
-## The three levels
+## Lo que hace
 
-| Level | Motto | CEFR | Expected interaction |
+- **42 situaciones listas para usar** repartidas en 6 categorías, cada una con sus tres niveles completos. Funcionan **sin conexión y sin API key**, son instantáneas y sirven de referencia del modelo.
+- **Catálogo filtrable**: chips por categoría y buscador que entiende español e inglés, para encontrar la situación en segundos.
+- **Generación con IA** de cualquier situación que escribas (en español o en inglés), también con los tres niveles completos.
+- **Vista lado a lado** de los tres niveles para que el estudiante *vea* su progresión, o **pestañas** para trabajar uno a uno.
+- **Modo práctica**: oculta las líneas de un personaje para que el estudiante las produzca, con botón para revelarlas de una en una.
+- **Lectura en voz alta** del diálogo completo o de una línea suelta (SpeechSynthesis del navegador).
+- **Ilustración de la escena** generada por IA, con indicador de carga y respaldo amable si falla.
+- **Copiar, descargar en `.txt` e imprimir** el material (con hoja de estilos de impresión para el plan de aula).
+- **Diagnóstico integrado** con 20 comprobaciones ejecutables desde la propia página.
+- **Guía docente por nivel**: rúbrica de evaluación oral y secuencia de sesión minuto a minuto, lista para imprimir.
+- **Biblioteca local**: guarda los microdiálogos que generes y recupéralos cuando quieras.
+- **Compartir por enlace**: el microdiálogo viaja dentro del propio enlace (comprimido), sin servidor ni API key. También exporta e importa `.json`.
+
+---
+
+## Cómo se usa
+
+1. Abre `microdialogos-msp.html` en el navegador.
+2. **Elige una situación** del catálogo (instantánea, sin coste) o **escribe la tuya**. Ajusta **2 o 3 interlocutores** y, si quieres, el modelo de IA.
+3. Pulsa **✨ Generar los tres niveles**. Con el catálogo es inmediato; con IA suele tardar entre 15 y 60 segundos.
+4. Muévete entre **🟢 / 🟡 / 🔴** o pulsa **👁️ Ver los tres niveles** para comparar la progresión.
+5. Activa **🎭 Modo práctica** y elige el personaje cuyas líneas se ocultarán.
+6. Usa **🔊 Escuchar diálogo** para modelar la pronunciación.
+7. Baja hasta **👩‍🏫 Guía docente** para la rúbrica y la secuencia de sesión, y pulsa **🖨️ Imprimir guía**.
+8. Lleva el material al aula con **📋 Copiar todo**, **⬇️ Descargar .txt** o **🖨️ Imprimir**; guarda lo que quieras conservar con **💾 Guardar** y compártelo con **🔗 Compartir**.
+
+> **Atajo:** pulsando **🧪 Diagnóstico** en la barra superior la propia herramienta se autocomprueba delante de ti.
+
+---
+
+## Los tres niveles
+
+| Nivel | Lema | CEFR | Interacción esperada |
 |---|---|---|---|
-| 🟢 `survival` | **I can say it** | A1–A2 | Reproduce → substitute → respond |
-| 🟡 `functional` | **I can interact** | A2–B1 | Adapt → expand → negotiate meaning |
-| 🔴 `communicative` | **I can improvise** | B1–B2 | Interpret → react → build meaning |
+| 🟢 `survival` | **I can say it** | A1–A2 | Reproducir → sustituir → responder |
+| 🟡 `functional` | **I can interact** | A2–B1 | Adaptar → ampliar → negociar significado |
+| 🔴 `communicative` | **I can improvise** | B1–B2 | Interpretar → reaccionar → construir significado |
 
-**Example of progression ("At the restaurant"), identical scenario in all three cases:**
+**Ejemplo de progresión («En el restaurante»), idéntico escenario en los tres casos:**
 
-- 🟢 Order a hamburger and a drink using model structures.
-- 🟡 Ask about ingredients, state a dietary restriction, change the dish and justify it with connectors.
-- 🔴 The wrong dish arrives: reasoned complaint, two solutions on the table and negotiation of compensation.
+- 🟢 Pedir una hamburguesa y una bebida con estructuras modelo.
+- 🟡 Preguntar ingredientes, declarar una restricción alimentaria, cambiar el plato y justificar con conectores.
+- 🔴 El plato llega equivocado: queja razonada, dos soluciones sobre la mesa y negociación de una compensación.
 
 ---
 
-## The 9 phases of each level
+## Las 9 fases de cada nivel
 
-| # | Phase | What it provides |
+| # | Fase | Qué aporta |
 |---|---|---|
-| 1 | **Context** | Sets the scene and the communicative purpose. |
-| 2 | **Model** | The exemplary dialogue: comprehensible input and modeling. |
-| 3 | **Comprehension** | Literal **and inferential** questions. |
-| 4 | **Guided practice** | Sentence frames and an example to produce with support. |
-| 5 | **Substitution** | Change one element of the pattern and produce again. |
-| 6 | **Personalization** | Bring the language into the student's real life. |
-| 7 | **Interaction** | Peer role-play with a communicative task. |
-| 8 | **Improvisation** | Unexpected twist: forces a reaction without a script. |
-| 9 | **Spontaneous production** | Transfer to a new, authentic situation. |
+| 1 | **Contexto** | Sitúa la escena y el propósito comunicativo. |
+| 2 | **Modelo** | El diálogo ejemplar: input comprensible y modelado. |
+| 3 | **Comprensión** | Preguntas literales **e inferenciales**. |
+| 4 | **Práctica guiada** | Marcos de frase y ejemplo para producir con apoyo. |
+| 5 | **Sustitución** | Cambiar un elemento del patrón y volver a producir. |
+| 6 | **Personalización** | Llevar el lenguaje a la vida real del estudiante. |
+| 7 | **Interacción** | Role-play entre iguales con tarea comunicativa. |
+| 8 | **Improvisación** | Giro inesperado: obliga a reaccionar sin guion. |
+| 9 | **Producción espontánea** | Transferencia a una situación nueva y auténtica. |
 
-Each level also adds **key language**, a **pronunciation focus**, **common errors** of Spanish speakers and **teacher notes**.
+Cada nivel añade además **lenguaje clave**, **foco de pronunciación**, **errores frecuentes** de hispanohablantes y **notas para el docente**.
 
 ---
 
-## Included situations
+## Situaciones incluidas
 
-**42 scenarios**, all with their three complete levels (126 micro-dialogues). The distribution comes from the project's scenario table (`escenarios_microdialogos_MSP.xlsx`) and respects its selection criteria: it balances communicative functions (asking, informing, narrating, giving opinions, complaining, negotiating, apologizing and planning), alternates **23 scenarios with 2 speakers and 19 with 3** — with three, turn-taking, interruptions and taking sides are practiced — and reserves the conflict scenarios for genuine escalation.
+**42 escenarios**, todos con sus tres niveles completos (126 microdiálogos). El reparto procede del cuadro de escenarios del proyecto (`escenarios_microdialogos_MSP.xlsx`) y respeta sus criterios de selección: equilibra funciones comunicativas (pedir, informar, narrar, opinar, quejarse, negociar, disculparse y planear), alterna **23 escenarios con 2 interlocutores y 19 con 3** —con tres se trabajan turnos, interrupciones y toma de posición— y reserva los de conflicto para escalar de verdad.
 
-The eight original scenarios were written before the six categories of the table were fixed, so their category is automatically normalized on load: the catalog and its filter speak a single language. The original category is documented in the table of each scenario in this section when it differs.
+Los ocho escenarios originales se redactaron antes de fijar las seis categorías del cuadro, así que su categoría se normaliza automáticamente al cargarlos: el catálogo y su filtro hablan un único idioma. La categoría original queda documentada en la tabla de cada escenario de esta sección cuando difiere.
 
-### Original scenarios (8)
+### Escenarios originales (8)
 
-| `id` | Situation | Voices | Category in the table |
+| `id` | Situación | Voces | Categoría en el cuadro |
 |---|---|---|---|
-| `restaurant` | At a restaurant | 2 | Daily life and services |
-| `introductions` | Meeting new people | 3 | Social and personal life |
-| `shopping` | Shopping for clothes | 2 | Daily life and services |
-| `directions` | Asking for directions | 3 | Culture and environment |
-| `routines` | Daily routines | 2 | Daily life and services |
-| `problem-solving` | Solving a problem | 2 | Conflict or negotiation |
-| `opinions` | Giving opinions | 3 | Social and personal life |
-| `health-emergency` | At the doctor's | 2 | Daily life and services |
+| `restaurant` | At a restaurant / En el restaurante | 2 | Vida diaria y servicios |
+| `introductions` | Meeting new people / Presentarse | 3 | Vida social y personal |
+| `shopping` | Shopping for clothes / De compras | 2 | Vida diaria y servicios |
+| `directions` | Asking for directions / Pedir indicaciones | 3 | Cultura y entorno |
+| `routines` | Daily routines / Rutinas diarias | 2 | Vida diaria y servicios |
+| `problem-solving` | Solving a problem / Resolver un problema | 2 | Conflicto o negociación |
+| `opinions` | Giving opinions / Dar tu opinión | 3 | Vida social y personal |
+| `health-emergency` | At the doctor's / En la consulta médica | 2 | Vida diaria y servicios |
 
-### Daily life and services (11)
+### Vida diaria y servicios (11)
 
-| `id` | Situation | Voices |
+| `id` | Situación | Voces |
 |---|---|---|
-| `hotel-checkin` | Checking in at a hotel | 2 |
-| `airport` | At the airport | 2 |
-| `public-transport` | Taking public transport | 3 |
-| `phone-call` | Making a phone call | 2 |
-| `bank-post-office` | At the bank or post office | 2 |
-| `pharmacy` | At the pharmacy | 2 |
-| `lost-item` | Reporting a lost item | 2 |
-| *(plus the 4 originals)* | `restaurant`, `shopping`, `routines`, `health-emergency` | 8 |
+| `hotel-checkin` | Checking in at a hotel / Registrarse en un hotel | 2 |
+| `airport` | At the airport / En el aeropuerto | 2 |
+| `public-transport` | Taking public transport / Usar transporte público | 3 |
+| `phone-call` | Making a phone call / Hacer una llamada | 2 |
+| `bank-post-office` | At the bank or post office / En el banco o correo | 2 |
+| `pharmacy` | At the pharmacy / En la farmacia | 2 |
+| `lost-item` | Reporting a lost item / Reportar un objeto perdido | 2 |
+| *(más los 4 originales)* | `restaurant`, `shopping`, `routines`, `health-emergency` | 8 |
 
-### Social and personal life (8)
+### Vida social y personal (8)
 
-| `id` | Situation | Voices |
+| `id` | Situación | Voces |
 |---|---|---|
-| `making-plans` | Making plans with friends | 3 |
-| `party-invitation` | Inviting someone to a party | 2 |
-| `hobbies` | Talking about hobbies | 2 |
-| `social-media` | Talking about social media | 3 |
-| `weekend-news` | Telling a story about your weekend | 2 |
-| `family-dinner` | Family gathering | 3 |
-| *(plus the 2 originals)* | `introductions`, `opinions` | 6 |
+| `making-plans` | Making plans with friends / Hacer planes con amigos | 3 |
+| `party-invitation` | Inviting someone to a party / Invitar a una fiesta | 2 |
+| `hobbies` | Talking about hobbies / Hablar de pasatiempos | 2 |
+| `social-media` | Talking about social media / Hablar de redes sociales | 3 |
+| `weekend-news` | Telling a story about your weekend / Contar tu fin de semana | 2 |
+| `family-dinner` | Family gathering / Reunión familiar | 3 |
+| *(más los 2 originales)* | `introductions`, `opinions` | 6 |
 
-### School and academic life (5)
+### Vida escolar y académica (5)
 
-| `id` | Situation | Voices |
+| `id` | Situación | Voces |
 |---|---|---|
-| `classroom` | In the classroom | 3 |
-| `group-project` | Working on a group project | 3 |
-| `asking-teacher` | Asking a teacher for help | 2 |
-| `exchange-student` | Meeting an exchange student | 3 |
-| `school-event` | Organizing a school event | 3 |
+| `classroom` | In the classroom / En el salón de clases | 3 |
+| `group-project` | Working on a group project / Trabajo en grupo | 3 |
+| `asking-teacher` | Asking a teacher for help / Pedir ayuda al profesor | 2 |
+| `exchange-student` | Meeting an exchange student / Conocer a un estudiante de intercambio | 3 |
+| `school-event` | Organizing a school event / Organizar un evento escolar | 3 |
 
-### Future outlook and the working world (5)
+### Proyección futura y mundo laboral (5)
 
-| `id` | Situation | Voices |
+| `id` | Situación | Voces |
 |---|---|---|
-| `job-interview` | At a job interview | 2 |
-| `future-plans` | Talking about future plans | 2 |
-| `career-advice` | Asking for career advice | 3 |
-| `university-admission` | Applying to university | 2 |
-| `volunteering` | Volunteering | 3 |
+| `job-interview` | At a job interview / En una entrevista de trabajo | 2 |
+| `future-plans` | Talking about future plans / Hablar de planes de futuro | 2 |
+| `career-advice` | Asking for career advice / Pedir consejo vocacional | 3 |
+| `university-admission` | Applying to university / Postularse a la universidad | 2 |
+| `volunteering` | Volunteering / Hacer voluntariado | 3 |
 
-### Conflict or negotiation, advanced level (7)
+### Conflicto o negociación, nivel avanzado (7)
 
-Designed to escalate: simple at the basic level and a full negotiation at the advanced level.
+Pensados para escalar: simples en el nivel básico y una negociación completa en el avanzado.
 
-| `id` | Situation | Voices |
+| `id` | Situación | Voces |
 |---|---|---|
-| `complaint` | Making a complaint | 2 |
-| `returning-product` | Returning a product | 2 |
-| `disagreement` | Disagreeing politely | 3 |
-| `negotiating-price` | Bargaining at a market | 2 |
-| `apology` | Apologizing and forgiving | 2 |
-| `misunderstanding` | Clearing up a misunderstanding | 3 |
-| *(plus the original)* | `problem-solving` | 2 |
+| `complaint` | Making a complaint / Presentar una queja | 2 |
+| `returning-product` | Returning a product / Devolver un producto | 2 |
+| `disagreement` | Disagreeing politely / Estar en desacuerdo con respeto | 3 |
+| `negotiating-price` | Bargaining at a market / Regatear en un mercado | 2 |
+| `apology` | Apologizing and forgiving / Disculparse | 2 |
+| `misunderstanding` | Clearing up a misunderstanding / Aclarar un malentendido | 3 |
+| *(más el original)* | `problem-solving` | 2 |
 
-### Culture and environment (6)
+### Cultura y entorno (6)
 
-| `id` | Situation | Voices |
+| `id` | Situación | Voces |
 |---|---|---|
-| `tourist-info` | Helping a tourist | 3 |
-| `weather-plans` | Weather and changing plans | 2 |
-| `environment` | Talking about the environment | 3 |
-| `technology` | Talking about technology | 3 |
-| `news-discussion` | Discussing a news story | 3 |
-| *(plus the original)* | `directions` | 3 |
+| `tourist-info` | Helping a tourist / Ayudar a un turista | 3 |
+| `weather-plans` | Weather and changing plans / El clima y cambio de planes | 2 |
+| `environment` | Talking about the environment / Hablar del medio ambiente | 3 |
+| `technology` | Talking about technology / Hablar de tecnología | 3 |
+| `news-discussion` | Discussing a news story / Comentar una noticia | 3 |
+| *(más el original)* | `directions` | 3 |
 
-> The clinical content (`health-emergency`, `pharmacy`) is kept to everyday, benign symptoms, and each level reminds learners that it is **language practice**, not medical advice.
+> El contenido clínico (`health-emergency`, `pharmacy`) se mantiene en síntomas cotidianos y benignos, y cada nivel recuerda que es **práctica de lengua**, no consejo médico.
 
-### How the progression was verified
+### Cómo se comprobó la progresión
 
-It is not enough for the advanced level to have longer sentences: it has to demand more. An automatic audit (`node _audit.js`) verifies across all 42 scenarios that
+No basta con que el nivel avanzado tenga frases más largas: tiene que exigir más. Una auditoría automática (`node _audit.js`) verifica en los 42 escenarios que
 
-- the average length of turns **grows monotonically** across the three levels (overall: ~5.5 → ~13.0 → ~18.9 words),
-- the advanced level grows on average **×3.43** relative to the basic level,
-- **all 42** advanced levels contain real discourse strategies: hedging, conceding, rebutting or asking for clarification,
-- the basic level does **not** depend on those nuances, which belong to the higher levels.
+- la longitud media de las intervenciones **crece de forma monótona** en los tres niveles (global: ~5,5 → ~13,0 → ~18,9 palabras),
+- el nivel avanzado crece de media **×3,43** respecto al básico,
+- **los 42** niveles avanzados contienen estrategias discursivas reales: matizar, conceder, rebatir o pedir aclaración,
+- el nivel básico **no** depende de esos matices, que son propios de los niveles superiores.
 
 ---
 
-## Teacher guide and rubric
+## Guía docente y rúbrica
 
-Each level of each micro-dialogue comes with its own **teacher guide** already written, derived from the material itself: since the guide is computed from the dialogue, it **can never contradict it**. It opens at the end of the level card, under the "👩‍🏫 Teacher guide" block, with three depths:
+Cada nivel de cada microdiálogo trae su **guía docente** ya redactada, derivada del propio material: como la guía se calcula a partir del diálogo, **nunca puede contradecirlo**. Se abre al final de la tarjeta de nivel, bajo el bloque «👩‍🏫 Guía docente», con tres profundidades:
 
-| Tab | What it offers |
+| Pestaña | Qué ofrece |
 |---|---|
-| 🎯 **Purpose of the session** | What this level is for, your role as teacher, grouping, what to avoid, how to know it worked, and homework. |
-| ⏱️ **Sequence** | The 9 MSP phases with **allotted minutes** (between 48 and 62 depending on the level), and what the teacher and the students do in each. |
-| 📊 **Oral rubric** | The assessment criteria with their four grades, and an **automatic calculation** of the result as you mark. |
+| 🎯 **Sentido de la sesión** | Para qué sirve este nivel, tu papel como docente, agrupamiento, qué conviene evitar, cómo saber que funcionó y tarea para casa. |
+| ⏱️ **Secuencia** | Las 9 fases MSP con **minutos asignados** (entre 48 y 62 según el nivel), y qué hace el docente y qué hacen los estudiantes en cada una. |
+| 📊 **Rúbrica oral** | Los criterios de evaluación con sus cuatro grados, y un **cálculo automático** del resultado al ir marcando. |
 
-**The rubric adapts to the level**; it is not the same template for all three:
+**La rúbrica se adapta al nivel**, no es la misma plantilla para los tres:
 
-| Level | Criteria (with weight) |
+| Nivel | Criterios (con su peso) |
 |---|---|
-| 🟢 Survival | Task completion (3) · Vocabulary and structures (3) · Fluency and pronunciation (2) · Interaction (2) · Autonomy (2) |
-| 🟡 Functional | Task completion (3) · Richness and accuracy (3) · Fluency (2) · Negotiation of meaning (3) · Autonomy (2) |
-| 🔴 Communicative | Task completion (3) · Argumentation and nuance (3) · Disagreement and discourse strategies (3) · Fluency and control of discourse (2) · Appropriateness and register (2) · Autonomy (2) |
+| 🟢 Survival | Cumplimiento de la tarea (3) · Vocabulario y estructuras (3) · Fluidez y pronunciación (2) · Interacción (2) · Autonomía (2) |
+| 🟡 Functional | Cumplimiento de la tarea (3) · Riqueza y corrección (3) · Fluidez (2) · Negociación de significado (3) · Autonomía (2) |
+| 🔴 Communicative | Cumplimiento de la tarea (3) · Argumentación y matiz (3) · Desacuerdo y estrategias discursivas (3) · Fluidez y control del discurso (2) · Adecuación y registro (2) · Autonomía (2) |
 
-Each criterion describes the four grades of the scale — **○ Emerging · ◔ Developing · ◕ Achieved · ● Outstanding** — in observable terms. For example, in *Communicative / Argumentation and nuance*, it goes from "States a position without giving any reason" to "Ranks reasons, concedes what is valid in the other person's view and defends their position with nuance".
+Cada criterio describe los cuatro grados de la escala —**○ Emergente · ◔ En desarrollo · ◕ Conseguido · ● Destacado**— en términos observables. Por ejemplo, en *Communicative / Argumentación y matiz*, va desde «Afirma sin dar ninguna razón» hasta «Jerarquiza razones, concede lo válido del otro y defiende su postura con matices».
 
-The sequence also changes its balance according to the level: **Survival devotes more time to input** (phases 1-3) and **Communicative more to production** (phases 7-9). An automatic check verifies this distribution across all 42 scenarios.
+La secuencia también cambia de equilibrio según el nivel: **Survival dedica más tiempo al input** (fases 1-3) y **Communicative más a la producción** (fases 7-9). Una comprobación automática verifica ese reparto en los 42 escenarios.
 
-**For the classroom**, the **🖨️ Print guide** button opens an A4 sheet with the sequence, the rubric with boxes to tick by hand, space for signatures and the scenario header. You can also **mark on screen** and let the tool calculate the percentage and the overall band, or **📋 Copy assessment** to paste the result into your records.
+**Para el aula**, el botón **🖨️ Imprimir guía** abre una hoja A4 con la secuencia, la rúbrica con casillas para marcar a mano, espacio para firmas y la cabecera del escenario. También puedes **marcar en pantalla** y dejar que la herramienta calcule el porcentaje y la banda global, o **📋 Copiar valoración** para pegar el resultado en tu registro.
 
 ---
 
-## Save, share and import
+## Guardar, compartir e importar
 
-Since AI-generated micro-dialogues are material you have paid for with your pollen, the tool does not lose them when you close the page.
+Como los microdiálogos generados con IA son material que has pagado con tu pollen, la herramienta no los pierde al cerrar la página.
 
-### Local library
+### Biblioteca local
 
-**💾 Save** stores the complete micro-dialogue in the browser's `localStorage`, under the name you give it. From **📚 Library** (also in the top bar) you can open, share, rename or delete it. Nothing is sent to any server.
+**💾 Guardar** almacena el microdiálogo completo en el `localStorage` del navegador, con el nombre que le pongas. Desde **📚 Biblioteca** (también en la barra superior) puedes abrirlo, compartirlo, renombrarlo o borrarlo. No se envía nada a ningún servidor.
 
-> If storage is full or the browser blocks it, the tool warns you and suggests downloading the `.json` instead of losing your work.
+> Si el almacenamiento está lleno o el navegador lo bloquea, la herramienta te avisa y te propone descargar el `.json` en lugar de perder el trabajo.
 
-### Share by link
+### Compartir por enlace
 
-**🔗 Share** puts the micro-dialogue **inside the URL itself**, compressed with `deflate`:
+**🔗 Compartir** mete el microdiálogo **dentro de la propia URL**, comprimido con `deflate`:
 
 ```
 https://…/microdialogos-msp.html#s=msp1.zQ29tcGxlc3NlZC…
 ```
 
-Whoever opens that link sees the micro-dialogue with its three levels, **without an API key and offline**. The link does not point to any server: the content travels in the URL fragment, which is not even sent to the page's server. The tool cleans the address as soon as it reads it.
+Quien abra ese enlace ve el microdiálogo con sus tres niveles, **sin API key y sin conexión**. El enlace no apunta a ningún servidor: el contenido viaja en el fragmento de la URL, que ni siquiera se envía al servidor de la página. La herramienta limpia la dirección en cuanto lo lee.
 
-The three levels of a scenario take up between **12 and 14 KB of link**. It works in email, virtual classrooms and messaging, but if your channel cuts it off you have alternatives:
+Los tres niveles de un escenario ocupan entre **12 y 14 KB de enlace**. Funciona en correo, aula virtual y mensajería, pero si tu canal lo corta tienes alternativas:
 
-- **⬇️ Download `.json`** and send the file (you can also export **the whole library** at once).
-- **📋 Copy as readable text**, to paste the material into a document or the class chat.
-- **⬆️ Import a `.json`** when you receive it.
+- **⬇️ Descargar `.json`** y enviar el archivo (también puedes exportar **toda la biblioteca** de una vez).
+- **📋 Copiar como texto legible**, para pegar el material en un documento o en el chat del aula.
+- **⬆️ Importar un `.json`** cuando lo recibas.
 
 ---
 
-## API key and BYOP flow
+## API key y flujo BYOP
 
-The tool uses **BYOP (Bring Your Own Pollen)**: the key is yours and is **never written in the code**.
+La herramienta usa **BYOP (Bring Your Own Pollen)**: la clave es tuya y **nunca se escribe en el código**.
 
-Press the **"No API key"** chip in the top bar. There are three paths:
+Pulsa el chip **«Sin API key»** en la barra superior. Hay tres caminos:
 
-| Path | When to use it | How it works |
+| Camino | Cuándo usarlo | Cómo funciona |
 |---|---|---|
-| **🚀 Get API key** (one click) | The usual case | Redirects to `enter.pollinations.ai/authorize`; on return, the key arrives in the **URL fragment** (`#api_key=…`), is saved and the URL is cleaned. No prior registration needed. |
-| **⚙️ OAuth with PKCE (S256)** | If you are a developer | Requires registering an **App Key** (`pk_…`) with your Redirect URI. It is the flow recommended by Pollinations for web apps. |
-| **📱 Device code** | If the redirect fails or doesn't come back | Opens Pollinations in another tab with a short code; the app detects it on its own. |
+| **🚀 Obtener API key** (un clic) | Lo normal | Redirige a `enter.pollinations.ai/authorize`; al volver, la clave llega en el **fragmento de la URL** (`#api_key=…`), se guarda y la URL se limpia. No necesita registro previo. |
+| **⚙️ OAuth con PKCE (S256)** | Si eres desarrollador | Requiere registrar una **App Key** (`pk_…`) con tu Redirect URI. Es el flujo recomendado por Pollinations para apps web. |
+| **📱 Código de dispositivo** | Si la redirección falla o no vuelve | Abre Pollinations en otra pestaña con un código corto; la app lo detecta sola. |
 
-The key's **format** is validated (it must start with `sk_`; a `pk_` is an App Key and does not authorize calls) and it is verified against the API without spending pollen. The `state` parameter is also checked as CSRF protection: if it does not match, **the key is not saved**.
+Se valida el **formato** de la clave (debe empezar por `sk_`; una `pk_` es una App Key y no autoriza llamadas) y se verifica contra la API sin gastar pollen. También se comprueba el parámetro `state` como protección CSRF: si no coincide, **la clave no se guarda**.
 
-**Where do I get a key by hand?** At [enter.pollinations.ai](https://enter.pollinations.ai). Official reference: [BRING_YOUR_OWN_POLLEN.md](https://github.com/pollinations/pollinations/blob/main/BRING_YOUR_OWN_POLLEN.md).
+**¿Dónde consigo una clave a mano?** En [enter.pollinations.ai](https://enter.pollinations.ai). Referencia oficial: [BRING_YOUR_OWN_POLLEN.md](https://github.com/pollinations/pollinations/blob/main/BRING_YOUR_OWN_POLLEN.md).
 
 ---
 
-## Requirements and getting started
+## Requisitos y arranque
 
-- A **modern browser** (current Chrome, Edge, Firefox or Safari). No installation, no `npm`, no server.
-- Internet connection **only** for AI generation and for illustrations. The catalog and all activities work offline.
-- The file weighs around **1.7 MB** because it carries all 42 complete situations inside, so that it works offline. This is normal: no additional download is needed.
+- Un **navegador moderno** (Chrome, Edge, Firefox o Safari actuales). Sin instalación, sin `npm`, sin servidor.
+- Conexión a Internet **solo** para generar con IA y para las ilustraciones. El catálogo y todas las actividades funcionan sin conexión.
+- El archivo pesa alrededor de **1,7 MB** porque lleva dentro las 42 situaciones completas, para que funcione sin conexión. Es normal: no necesita ninguna descarga adicional.
 
-**Option A — double click.** Open `microdialogos-msp.html`. You will see `file://` in the address bar. Everything works except the authorization **redirect** (it needs an `http(s)` address): in that case, paste the key by hand.
+**Opción A — doble clic.** Abre `microdialogos-msp.html`. Verás `file://` en la barra de direcciones. Todo funciona salvo la **redirección** de autorización (necesita una dirección `http(s)`): en ese caso pega la clave a mano.
 
-**Option B — local server (recommended for BYOP).**
+**Opción B — servidor local (recomendado para BYOP).**
 
 ```bash
 python -m http.server 8000
-# or:  npx serve .
+# o bien:  npx serve .
 ```
 
-And open `http://localhost:8000/microdialogos-msp.html`.
+Y abre `http://localhost:8000/microdialogos-msp.html`.
 
 ---
 
-## Architecture
+## Arquitectura
 
-The deliverable is a **single HTML file** with HTML + CSS + vanilla JavaScript. To make it maintainable and testable, it is compiled from separate sources:
+El entregable es **un único archivo HTML** con HTML + CSS + JavaScript vanilla. Para poder mantenerlo y probarlo, se compila a partir de fuentes separadas:
 
 ```
 shell.html ─┐
 ui.css ─────┤
-core.js ────┼──► build.js ──► microdialogos-msp.html   ← DELIVERABLE
+core.js ────┼──► build.js ──► microdialogos-msp.html   ← ENTREGABLE
 _content_*.js ┤
 ui.js ──────┘
 ```
 
-| File | Role |
+| Archivo | Papel |
 |---|---|
-| `microdialogos-msp.html` | **Final deliverable.** A single, self-contained file. |
-| `shell.html` | HTML skeleton with the mount points. |
-| `ui.css` | Styles: layout, animations, responsive design and print stylesheet. |
-| `core.js` | **DOM-free core**: MSP engine, API layer, JSON parsing, BYOP/OAuth/PKCE, teacher guide, library and shared links. |
-| `ui.js` | Interface: rendering, tabs, practice mode, TTS, copy/print, images, guide, library, sharing and diagnostics. |
-| `_content_a.js` … `_content_i.js` | The 42 situations with their three levels, spread across 9 content files. |
-| `build.js` | Assembles the deliverable and verifies its integrity (including the real JavaScript syntax). |
-| `validate_scenarios.js` | Content schema validator. |
-| `_audit.js` | Pedagogical audit: checks the real progression and the length bands. |
-| `_leer_xlsx.js` | Dependency-free utility to dump the scenario table to text. |
-| `tests_core.js` | Core tests (run in Node, without a browser). |
-| `tests_build.js` | Tests **on the already generated file**. |
-| `verificar_navegador.js` | **Functional** verification in real Chrome via the DevTools protocol. |
-| `microdiálogos_V1.txt` | Original specification of the commission. |
-| `escenarios_microdialogos_MSP.xlsx` | Scenario table: all 42 with their category, `id`, titles and number of characters, plus the selection criteria. It is the source of the list above. |
+| `microdialogos-msp.html` | **Entregable final.** Un solo archivo, autónomo. |
+| `shell.html` | Esqueleto HTML con los puntos de montaje. |
+| `ui.css` | Estilos: diseño, animaciones, responsive y hoja de impresión. |
+| `core.js` | **Núcleo sin DOM**: motor MSP, capa de API, parseo de JSON, BYOP/OAuth/PKCE, guía docente, biblioteca y enlaces compartidos. |
+| `ui.js` | Interfaz: render, pestañas, modo práctica, TTS, copiar/imprimir, imágenes, guía, biblioteca, compartir y diagnóstico. |
+| `_content_a.js` … `_content_i.js` | Las 42 situaciones con sus tres niveles, repartidas en 9 archivos de contenido. |
+| `build.js` | Ensambla el entregable y verifica su integridad (incluida la sintaxis real del JavaScript). |
+| `validate_scenarios.js` | Validador del esquema de contenido. |
+| `_audit.js` | Auditoría pedagógica: comprueba la progresión real y las bandas de longitud. |
+| `_leer_xlsx.js` | Utilidad sin dependencias para volcar el cuadro de escenarios a texto. |
+| `tests_core.js` | Pruebas del núcleo (se ejecutan en Node, sin navegador). |
+| `tests_build.js` | Pruebas **sobre el archivo ya generado**. |
+| `verificar_navegador.js` | Verificación **funcional en Chrome real** por el protocolo de DevTools. |
+| `microdiálogos_V1.txt` | Especificación original del encargo. |
+| `escenarios_microdialogos_MSP.xlsx` | Cuadro de escenarios: los 42 con su categoría, `id`, títulos y número de personajes, y los criterios de selección. Es la fuente de la lista de arriba. |
 
-When rebuilding, `build.js` **really compiles and validates the JavaScript** of each block, checks that no template markers remain, that no `<script>` block is broken, that there are no odd backticks opening an unclosed template, and that **no API key is embedded**.
+Al reconstruir, `build.js` **compila y valida el JavaScript de verdad** de cada bloque, comprueba que no queden marcadores de plantilla, que ningún bloque `<script>` se rompa, que no haya backticks impares que abran una plantilla sin cerrar y que **no haya ninguna API key incrustada**.
 
 ---
 
-## API technical details
+## Detalles técnicos de la API
 
-- **Text — always `POST`** (prompts are long and a `GET` causes HTTP 414):
+- **Texto — siempre `POST`** (los prompts son largos y un `GET` provoca HTTP 414):
 
   ```
   POST https://gen.pollinations.ai/v1/chat/completions
@@ -334,95 +334,93 @@ When rebuilding, `build.js` **really compiles and validates the JavaScript** of 
   Body:    { "model": "openai", "messages": [ { "role": "user", "content": "{prompt}" } ] }
   ```
 
-- **Images — `GET` inside `<img src>`**: `https://image.pollinations.ai/prompt/{prompt}`.
-- **Authorization**: `https://enter.pollinations.ai/authorize` · **Token**: `https://enter.pollinations.ai/api/oauth/token`.
-- **Default model**: `openai` (official alias of `openai/gpt-5.4-nano`).
+- **Imágenes — `GET` dentro de `<img src>`**: `https://image.pollinations.ai/prompt/{prompt}`.
+- **Autorización**: `https://enter.pollinations.ai/authorize` · **Token**: `https://enter.pollinations.ai/api/oauth/token`.
+- **Modelo por defecto**: `openai` (alias oficial de `openai/gpt-5.4-nano`).
 
-Response parsing is defensive: it strips ```` ```json ```` fences, courtesy text around the JSON, trailing commas and typographic quotes, and **repairs truncated JSON** (when the response is cut off by the token limit). HTTP errors are translated into messages in Spanish with an actionable hint: `401/403` invalid key, `402` no pollen, `429` too many requests, `5xx` temporary service error.
+El parseo de la respuesta es defensivo: quita cercas ```` ```json ````, texto de cortesía alrededor, comas finales, comillas tipográficas y **repara JSON truncado** (cuando la respuesta se corta por límite de tokens). Los errores HTTP se traducen a mensajes en español con pista accionable: `401/403` clave inválida, `402` sin pollen, `429` demasiadas solicitudes, `5xx` error temporal del servicio.
 
 ---
 
-## Scripts and tests
+## Scripts y pruebas
 
 ```bash
-# Rebuild the deliverable (discovers the _content_*.js files on its own)
+# Reconstruir el entregable (descubre solo los _content_*.js)
 node build.js
 
-# Validate the schema of all content files
+# Validar el esquema de todos los archivos de contenido
 node validate_scenarios.js _content_*.js
 
-# Pedagogical audit: real progression across the three levels
+# Auditoría pedagógica: progresión real entre los tres niveles
 node _audit.js
 
-# Core tests (155 tests)
+# Pruebas del núcleo (155 pruebas)
 node tests_core.js
 
-# Tests on the already generated file (40 tests)
+# Pruebas sobre el archivo ya generado (40 pruebas)
 node tests_build.js
 
-# Functional verification in real Chrome, via the DevTools protocol (14 checks)
+# Verificación funcional en Chrome real, por el protocolo de DevTools (14 comprobaciones)
 node verificar_navegador.js
 ```
 
-> In PowerShell, `_content_*.js` is not expanded automatically: pass it the full list, for example
+> En PowerShell, `_content_*.js` no se expande solo: pásale la lista completa, por ejemplo
 > `node validate_scenarios.js _content_a.js _content_b.js _content_c.js _content_d.js _content_e.js _content_f.js _content_g.js _content_h.js _content_i.js`.
 
-Current status, all green:
+Estado actual, todo en verde:
 
-| Check | Result |
+| Comprobación | Resultado |
 |---|---|
-| Schema validation | `OK: 42 escenarios validos en 9 archivo(s)` |
-| Pedagogical audit | `Auditoría correcta: la progresión es real en los 42 escenarios` |
-| Core tests | `155 pruebas correctas, 0 fallidas` |
-| Deliverable tests | `40 pruebas correctas, 0 fallidas` |
-| Verification in real Chrome | `TODO CORRECTO` (14 checks) |
-| App self-diagnostics | `21 of 21` checks |
+| Validación de esquema | `OK: 42 escenarios validos en 9 archivo(s)` |
+| Auditoría pedagógica | `Auditoría correcta: la progresión es real en los 42 escenarios` |
+| Pruebas del núcleo | `155 pruebas correctas, 0 fallidas` |
+| Pruebas del entregable | `40 pruebas correctas, 0 fallidas` |
+| Verificación en Chrome real | `TODO CORRECTO` (14 comprobaciones) |
+| Autodiagnóstico de la app | `21 de 21` comprobaciones |
 
-*(The result strings are the literal output printed by the scripts, in Spanish.)*
+Las pruebas cubren: parseo de JSON (limpio, con cercas, con texto alrededor, truncado, corrupto), normalización de respuestas pobres de la IA, construcción del prompt y del cuerpo `POST`, validación de claves, PKCE con vector de prueba, lectura de la redirección, protección `state`, canje de código, `device flow`, clasificación de errores, escapado anti-XSS, limpieza de la URL y ausencia de claves incrustadas.
 
-The tests cover: JSON parsing (clean, fenced, with surrounding text, truncated, corrupt), normalization of poor AI responses, construction of the prompt and the `POST` body, key validation, PKCE with a test vector, redirect reading, `state` protection, code exchange, `device flow`, error classification, anti-XSS escaping, URL cleaning and absence of embedded keys.
+Sobre el contenido: que estén los 42 `id` esperados, sin duplicados, con 2 o 3 personajes, las 6 categorías pobladas y el filtro y el buscador devolviendo lo que deben.
 
-On content: that all 42 expected `id`s are present, with no duplicates, with 2 or 3 characters, the 6 categories populated, and the filter and search returning what they should.
+Sobre la guía docente: que se genere para **los 42 escenarios × 3 niveles** (126 guías), que cada rúbrica tenga sus cuatro grados descritos en todos los criterios, que el cálculo de la nota dé los extremos correctos (100 % con todo «Destacado», 25 % con todo «Emergente», 0 % sin marcar), que los pesos sumen y que la secuencia cubra las 9 fases con docente y estudiantes en cada una.
 
-On the teacher guide: that it is generated for **all 42 scenarios × 3 levels** (126 guides), that each rubric has its four grades described in every criterion, that the score calculation gives the correct extremes (100% with everything "Outstanding", 25% with everything "Emerging", 0% with nothing marked), that the weights add up, and that the sequence covers the 9 phases with teacher and students in each.
-
-On sharing and saving: full round trip of the scenario through `localStorage` and through the compressed link, rejection of empty tokens, tokens with an unknown format, damaged ones or ones with base64 garbage, and that a link opened in a **clean browser load** brings the micro-dialogue with its three levels and cleans the URL.
+Sobre compartir y guardar: ida y vuelta completa del escenario por `localStorage` y por enlace comprimido, rechazo de tokens vacíos, con formato desconocido, dañados o con basura en base64, y que un enlace abierto en una **carga limpia del navegador** traiga el microdiálogo con sus tres niveles y limpie la URL.
 
 ---
 
-## Troubleshooting
+## Solución de problemas
 
-| Symptom | Cause and solution |
+| Síntoma | Causa y solución |
 |---|---|
-| "There is no API key yet" when generating your own situation | The catalog works without a key; to generate with AI you need one. Press **Get API key**. |
-| The authorization button doesn't come back with the key | You are on `file://`. Serve the folder over `http` (see [getting started](#requirements-and-getting-started)) or use the **device code** or manual paste. |
-| "That format is not valid" | A user key starts with `sk_`. If it starts with `pk_` it is an App Key and cannot be used to call the API. |
-| The key isn't saved on return | The `state` did not match (CSRF protection). Start the authorization again. |
-| "No connection to the service" | Without Internet only the catalog is available; the rest of the tool keeps working. |
-| The illustration doesn't load | The material is fully usable without it. Press **Retry image**. |
-| Read-aloud can't be heard | The browser has no English voices installed or doesn't support SpeechSynthesis. You can check it in **🧪 Diagnostics**. |
-| Generation takes too long | Try a faster model (`openai-fast` or `mistral`) in the selector. |
-| An AI-generated situation has disappeared | It is not saved automatically: press **💾 Save** to keep it in the library. |
-| "Could not save: storage is full" | The browser has no space or blocks `localStorage`. Download the `.json` and delete old library entries. |
-| The shared link opens nothing or arrives cut off | Your channel (chat, email) truncated it. Send the `.json` or use **📋 Copy as readable text**. |
-| An old link says the format isn't recognized | The content arrived incomplete. Ask for it to be resent, or use the `.json`. |
-| I want to reuse the rubric on paper | Press **🖨️ Print guide** inside the teacher guide block: it comes out on A4 with boxes to tick by hand. |
+| «Aún no hay API key» al generar una situación propia | El catálogo funciona sin clave; para generar con IA necesitas una. Pulsa **Obtener API key**. |
+| El botón de autorización no vuelve con la clave | Estás en `file://`. Sirve la carpeta por `http` (ver [arranque](#requisitos-y-arranque)) o usa el **código de dispositivo** o el pegado manual. |
+| «Ese formato no es válido» | Una clave de usuario empieza por `sk_`. Si empieza por `pk_` es una App Key y no sirve para llamar a la API. |
+| La clave no se guarda al volver | El `state` no coincidió (protección CSRF). Vuelve a empezar la autorización. |
+| «Sin conexión con el servicio» | Sin Internet solo está disponible el catálogo; el resto de la herramienta sigue funcionando. |
+| La ilustración no carga | El material es completamente usable sin ella. Pulsa **Reintentar imagen**. |
+| No se oye la lectura en voz alta | El navegador no tiene voces en inglés instaladas o no soporta SpeechSynthesis. Puedes comprobarlo en **🧪 Diagnóstico**. |
+| La generación tarda mucho | Prueba un modelo más rápido (`openai-fast` o `mistral`) en el selector. |
+| Una situación generada con IA ha desaparecido | No se guarda sola: pulsa **💾 Guardar** para conservarla en la biblioteca. |
+| «No se pudo guardar: el almacenamiento está lleno» | El navegador no tiene espacio o bloquea `localStorage`. Descarga el `.json` y borra entradas antiguas de la biblioteca. |
+| El enlace compartido no abre nada o llega cortado | Tu canal (chat, correo) lo truncó. Manda el `.json` o usa **📋 Copiar como texto legible**. |
+| Un enlace antiguo dice que el formato no se reconoce | El contenido llegó incompleto. Pide que lo reenvíen, o usa el `.json`. |
+| Quiero reutilizar la rúbrica en papel | Pulsa **🖨️ Imprimir guía** dentro del bloque de guía docente: sale en A4 con casillas para marcar a mano. |
 
 ---
 
-## Privacy and security
+## Privacidad y seguridad
 
-- The API key is **never written in the code**. It lives only in your browser's `localStorage` (and `sessionStorage`) and is sent **only** to `gen.pollinations.ai` as an `Authorization` header in your own requests.
-- When returning from authorization, the key travels in the URL **fragment** (which does not reach server logs) and the address is **cleaned immediately** with `history.replaceState`.
-- All AI-generated content is **escaped before being rendered**, so that a malicious response cannot inject HTML.
-- `build.js` refuses to build if it detects a real-looking key embedded in the deliverable.
-- There is a button to **delete the key** from the browser at any time.
-- The **library** and **shared micro-dialogues** stay in your browser: the link's content travels in the URL fragment, which is not sent to the server that serves the page, and the address is cleaned as soon as it is read.
-- The tool has **no backend and no analytics**: there is no server of its own that receives your data.
+- La API key **nunca está escrita en el código**. Vive solo en el `localStorage` (y `sessionStorage`) de tu navegador y se envía **únicamente** a `gen.pollinations.ai` como cabecera `Authorization` en tus propias peticiones.
+- Al volver de la autorización, la clave viaja en el **fragmento** de la URL (que no llega a los registros del servidor) y la dirección se **limpia inmediatamente** con `history.replaceState`.
+- Todo el contenido generado por la IA se **escapa antes de pintarse**, para que una respuesta maliciosa no pueda inyectar HTML.
+- `build.js` rechaza la compilación si detecta una clave con pinta de real incrustada en el entregable.
+- Existe un botón para **borrar la clave** del navegador en cualquier momento.
+- La **biblioteca** y los **microdiálogos compartidos** se quedan en tu navegador: el contenido del enlace viaja en el fragmento de la URL, que no se envía al servidor que sirve la página, y la dirección se limpia en cuanto se lee.
+- La herramienta **no tiene backend ni analítica**: no hay ningún servidor propio que reciba tus datos.
 
 ---
 
-## Credits
+## Créditos
 
-- Text, images and authorization: [Pollinations.AI](https://pollinations.ai) · [BYOP documentation](https://github.com/pollinations/pollinations/blob/main/BRING_YOUR_OWN_POLLEN.md)
-- Instructional design, interface and development: Professor Édgar Herrera Morales from ELT/UX of Microdiálogos MSP
+- Texto, imágenes y autorización: [Pollinations.AI](https://pollinations.ai) · [documentación BYOP](https://github.com/pollinations/pollinations/blob/main/BRING_YOUR_OWN_POLLEN.md)
+- Diseño instruccional, interfaz y desarrollo: Profesor Édgar Herrera Morales from ELT/UX de Microdiálogos MSP
